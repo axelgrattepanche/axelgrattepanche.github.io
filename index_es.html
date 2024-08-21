@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Paris Lyon - Menú</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="language-selector">
+            <div class="select-btn" id="current-selection">
+                <img src="es-flag.png" alt="ES" id="current-flag">ES
+            </div>
+            <div class="options" id="language-options">
+                <div data-value="index.html" data-image="fr-flag.png" data-lang="FR">
+                    <img src="fr-flag.png" alt="FR">FR
+                </div>
+                <div data-value="index_en.html" data-image="en-flag.png" data-lang="EN">
+                    <img src="en-flag.png" alt="EN">EN
+                </div>
+                <div data-value="index_es.html" data-image="es-flag.png" data-lang="ES">
+                    <img src="es-flag.png" alt="ES">ES
+                </div>
+            </div>
+        </div>
+
+        <h1>Le Paris Lyon - Menú</h1>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#starters">Entradas</a></li>
+                <li><a href="#salads">Ensaladas</a></li>
+                <li><a href="#main-courses">Platos Principales</a></li>
+                <li><a href="#desserts">Postres</a></li>
+                <li><a href="#breakfast">Desayuno</a></li>
+            </ul>
+        </nav>
+        <main class="menu">
+            <section id="starters">
+                <h2>Entrantes</h2>
+                <ul>
+                    <li>Huevos con mayonesa - 7,00 €</li>
+                    <li>Filetes de Arenque - 8,00 €</li>
+                    <li>Salmón ahumado - 9,00 €</li>
+                    <li>Terrina de campaña - 8,00 €</li>
+                    <li>Burrata con tomate - 11,00 €</li>
+                    <li>½ Camembert asado con miel - 8,50 €</li>
+                </ul>
+                <h3>Tapas</h3>
+                <ul>
+                    <li>Papas fritas caseras - 6,00 €</li>
+                    <li>Nuggets - 6,00 €</li>
+                    <li>Calamares - 6,00 €</li>
+                    <li>Palitos de queso (4 piezas) - 6,00 €</li>
+                    <li>Mix de tapas - 18,00 €</li>
+                </ul>
+            </section>
+            <section id="salads">
+                <h2>Ensaladas</h2>
+                <ul>
+                    <li>CÉSAR: Pollo empanado fresco, tomate, huevo, picatostes, parmesano - 15,00 €</li>
+                    <li>BURRATA: Verduras salteadas, tomate, Burrata, ensalada - 16,00 €</li>
+                    <li>QUESO DE CABRA CON SERRANO: Queso de cabra crujiente con miel y jamón Serrano - 16,00 €</li>
+                    <li>ITALIANA: Ensalada de Burrata, jamón Serrano, tomate, huevo, picatostes - 17,00 €</li>
+                    <li>BURRATA y Salmón Ahumado - 19,00 €</li>
+                </ul>
+            </section>
+            <section id="main-courses">
+                <h2>Platos Principales</h2>
+                <ul>
+                    <li>Cheeseburger - 16,00 €</li>
+                    <li>Pollo empanado fresco - 15,00 €</li>
+                    <li>Entrecot 300g - 19,00 €</li>
+                    <li>Confit de pato casero - 16,00 €</li>
+                    <li>Pasta Carbonara, Boloñesa - 15,00 €</li>
+                    <li>Lasaña Boloñesa casera - 16,00 €</li>
+                    <li>Pollo empanado fresco - 15,00 €</li>
+                    <li>Filete de lomo con chalota - 19,00 €</li>
+                    <li>Entrecot 300g - 22,00 €</li>
+                    <li>Entrecot 400g - 28,00 €</li>
+                    <li>Filete de lubina, verduras - 18,00 €</li>
+                    <li>Fish and Chips - 16,00 €</li>
+                </ul>
+            </section>
+            <section id="desserts">
+                <h2>Postres</h2>
+                <ul>
+                    <li>Crème brûlée - 7,00 €</li>
+                    <li>Mousse de chocolate - 7,00 €</li>
+                    <li>Tarta del día - 7,00 €</li>
+                    <li>Postre del día - 7,00 €</li>
+                </ul>
+            </section>
+            <section id="breakfast">
+                <h2>Fórmula de Desayuno</h2>
+                <ul>
+                    <li>Sencillo - 7,50 €</li>
+                    <li>Gourmet - 13,50 €</li>
+                    <li>1 bebida caliente</li>
+                    <li>1 croissant y tostada</li>
+                    <li>1 jugo de fruta</li>
+                    <li>1 tortilla de jamón y queso</li>
+                </ul>
+            </section>
+            <!-- Autres sections... -->
+        </main>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+        document.getElementById('current-selection').addEventListener('click', function () {
+            var options = document.getElementById('language-options');
+            options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.querySelectorAll('#language-options div').forEach(function (option) {
+            option.addEventListener('click', function () {
+                var value = this.getAttribute('data-value');
+                var image = this.getAttribute('data-image');
+                var lang = this.getAttribute('data-lang');
+
+                document.getElementById('current-flag').src = image;
+                document.getElementById('current-flag').alt = lang;
+                document.getElementById('current-selection').textContent = lang;
+                document.getElementById('current-selection').prepend(document.getElementById('current-flag'));
+                document.getElementById('language-options').style.display = 'none';
+
+                window.location.href = value;
+            });
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!document.querySelector('.language-selector').contains(event.target)) {
+                document.getElementById('language-options').style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
